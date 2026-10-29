@@ -22,3 +22,14 @@ jobs:
 
       - name: Verificar imagen Docker
         run: docker image inspect reservas-medicas:test
+
+      - name: Iniciar contenedor de prueba
+        run: docker run -d --name reservas-test -p 8080:80 reservas-medicas:test
+
+      - name: Verificar funcionamiento web
+        run: |
+          curl --fail --retry 5 --retry-delay 2 --retry-connrefused http://localhost:8080/
+
+      - name: Detener contenedor de prueba
+        if: always()
+        run: docker rm -f reservas-test
