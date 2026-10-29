@@ -24,11 +24,21 @@ jobs:
         run: docker image inspect reservas-medicas:test
 
       - name: Iniciar contenedor de prueba
-        run: docker run -d --name reservas-test -p 8080:80 reservas-medicas:test
+        run: docker run -d --name reservas-test -p 127.0.0.1:8080:80 reservas-medicas:test
 
       - name: Verificar funcionamiento web
         run: |
-          curl --fail --retry 5 --retry-delay 2 --retry-connrefused http://localhost:8080/
+         for i in {1..10}; do
+            if curl --fail --silent --show-error http://127.0.0.1:8080/; then
+           echo "Aplicacion web funcionando correctamente"
+             exit 0
+             fi
+           echo "Esperando que el servidor web este disponible..."
+            sleep 3
+            done
+           echo "ERROR: El servidor web no respondio"
+           docker logs reservas-test
+          exit 1
 
       - name: Detener contenedor de prueba
         if: always()
