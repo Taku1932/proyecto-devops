@@ -1,0 +1,33 @@
+﻿
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sistema de Reservas Médicas</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <h1>Sistema de Reservas Médicas</h1>
+        <p>Bienvenido a nuestra plataforma de reservas</p>
+    </header>
+<main>
+    <h2>Reserva tu hora médica</h2>
+    <p>Completa los siguientes datos:</p>
+
+    <form id="formReserva">
+        <label for="nombre">Nombre del paciente:</label>
+        <input type="text" id="nombre" required>
+
+        <label for="fecha">Fecha de atención:</label>
+        <input type="date" id="fecha" required>
+
+        <button type="submit">Reservar hora</button>
+    </form>
+
+    <p id="mensaje"></p>
+</main>
+    <script src="script.js"></script>
+</body>
+</html>
