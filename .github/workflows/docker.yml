@@ -43,3 +43,28 @@ jobs:
       - name: Detener contenedor de prueba
         if: always()
         run: docker rm -f reservas-test
+
+        
+      - name: Validar Docker Compose
+        run: docker compose config --quiet
+
+      - name: Iniciar aplicacion con Docker Compose
+        run: docker compose up -d --build
+
+      - name: Verificar aplicacion con Docker Compose
+        run: |
+          for i in {1..10}; do
+            if curl --fail --silent --show-error http://127.0.0.1:8082/; then
+              echo "Aplicacion con Docker Compose funcionando correctamente"
+              exit 0
+            fi
+            echo "Esperando que Docker Compose inicie la aplicacion..."
+            sleep 3
+          done
+          echo "ERROR: La aplicacion no respondio"
+          docker compose logs
+          exit 1
+
+      - name: Detener Docker Compose
+        if: always()
+        run: docker compose down
