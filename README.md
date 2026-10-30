@@ -1,49 +1,103 @@
-# Sistema de Reservas M�dicas
+﻿# Sistema de Reservas Médicas
 
-## Descripci�n
-Aplicaci�n web para registrar reservas m�dicas mediante un formulario que permite ingresar el nombre del paciente y la fecha de atenci�n.
+## Descripción
+Aplicación web que permite registrar reservas médicas mediante un formulario donde el usuario ingresa el nombre del paciente y la fecha de atención.
 
-## Tecnolog�as utilizadas
+## Tecnologías utilizadas
 - HTML5
 - CSS3
 - JavaScript
 - Docker
 - Nginx
+- Docker Compose
 - Git y GitHub
 - GitHub Actions
 
-## Ejecuci�n con Docker
+## Estructura del proyecto
+
+```text
+proyecto-devops/
+├── .github/
+│   └── workflows/
+│       └── docker.yml
+├── src/
+│   ├── index.html
+│   └── styles.css
+├── .gitignore
+├── docker-compose.yml
+├── Dockerfile
+├── README.md
+└── script.js
+```
+
+## Ejecución con Docker
 
 Construir la imagen:
 
 ```bash
-docker build -t reservas-medicas:v1 .
+docker build -t reservas-medicas:v2 .
 ```
 
 Iniciar el contenedor:
 
 ```bash
-docker run -d --name reservas-medicas -p 8080:80 reservas-medicas:v1
+docker run -d --name reservas-prueba-v2 -p 8081:80 reservas-medicas:v2
 ```
 
 Abrir en el navegador:
 
-http://localhost:8080
+http://localhost:8081
 
-## Integraci�n continua (CI)
+## Ejecución con Docker Compose
 
-El proyecto utiliza GitHub Actions para ejecutar autom�ticamente las siguientes tareas:
+Construir e iniciar el servicio:
 
-1. Descargar el c�digo del repositorio.
+```bash
+docker compose up -d --build
+```
+
+Verificar el estado:
+
+```bash
+docker compose ps
+```
+
+Abrir en el navegador:
+
+http://localhost:8082
+
+Detener el servicio:
+
+```bash
+docker compose down
+```
+
+## Integración continua (CI)
+
+El proyecto utiliza GitHub Actions para ejecutar automáticamente las siguientes tareas:
+
+1. Descargar el código del repositorio.
 2. Configurar Docker Buildx.
 3. Construir la imagen Docker.
 4. Verificar la imagen generada.
 5. Iniciar un contenedor de prueba.
-6. Comprobar que el servidor web responde correctamente.
+6. Comprobar que el servidor web responde.
 7. Eliminar el contenedor de prueba.
 
 El flujo se ejecuta al realizar un push o pull request hacia la rama main.
 
-## Resultado
+## Pruebas automáticas
 
-Se verific� el funcionamiento local de la aplicaci�n mediante Docker y la ejecuci�n exitosa del pipeline de integraci�n continua en GitHub Actions.
+El pipeline verifica que la aplicación web pueda ejecutarse correctamente dentro de un contenedor Docker.
+
+Las pruebas permiten detectar errores en la construcción de la imagen o en la disponibilidad del servidor web.
+
+## Resultados
+
+Se verificó el funcionamiento local de la aplicación mediante Docker y Docker Compose.
+
+Además, se confirmó la ejecución exitosa del pipeline de integración continua en GitHub Actions, incluyendo las pruebas automáticas.
+
+## Repositorio
+
+https://github.com/Taku1932/proyecto-devops
