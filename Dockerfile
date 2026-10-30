@@ -1,7 +1,8 @@
 FROM nginx:alpine
 
-COPY index.html /usr/share/nginx/html/index.html
-COPY styles.css /usr/share/nginx/html/styles.css
+COPY src/index.html /usr/share/nginx/html/index.html
+COPY src/styles.css /usr/share/nginx/html/styles.css
 COPY script.js /usr/share/nginx/html/script.js
 
 EXPOSE 80
+

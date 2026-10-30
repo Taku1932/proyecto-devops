@@ -1,0 +1,10 @@
+services:
+  reservas-medicas:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: reservas-medicas:v2
+    container_name: reservas-compose
+    ports:
+      - "8082:80"
+    restart: unless-stopped
