@@ -101,3 +101,16 @@ Además, se confirmó la ejecución exitosa del pipeline de integración continu
 ## Repositorio
 
 https://github.com/Taku1932/proyecto-devops
+
+## Flujo de trabajo con Git
+
+El proyecto utiliza Git para controlar las versiones del código fuente.
+
+Se utilizan dos ramas principales:
+
+- main: contiene la versión estable del proyecto.
+- develop: permite realizar mejoras antes de integrarlas a la rama principal.
+
+Los cambios se integran mediante Pull Requests en GitHub, permitiendo revisar las modificaciones antes de incorporarlas a main.
+
+Este procedimiento permite mantener un historial de cambios y aplicar buenas prácticas de integración continua dentro del enfoque DevOps.
