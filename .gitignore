@@ -1,1 +1,13 @@
+# Archivos de configuracion local
 .vs/
+.vscode/
+
+# Variables de entorno
+.env
+.env.*
+!.env.example
+
+# Archivos temporales
+*.log
+.DS_Store
+Thumbs.db
