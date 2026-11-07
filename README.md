@@ -64,7 +64,7 @@ docker compose ps
 
 Abrir en el navegador:
 
-http://localhost:8082
+http://localhost:8080
 
 Detener el servicio:
 
