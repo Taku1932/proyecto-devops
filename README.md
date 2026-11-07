@@ -41,12 +41,12 @@ docker build -t reservas-medicas:v2 .
 Iniciar el contenedor:
 
 ```bash
-docker run -d --name reservas-prueba-v2 -p 8081:80 reservas-medicas:v2
+docker run -d --name reservas-prueba-v2 -p 8080:80 reservas-medicas:v2
 ```
 
 Abrir en el navegador:
 
-http://localhost:8081
+http://localhost:8080
 
 ## Ejecución con Docker Compose
 
